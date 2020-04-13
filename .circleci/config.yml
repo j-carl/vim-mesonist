@@ -1,0 +1,23 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: archlinux:latest
+    steps:
+      - run:
+          name: Update system
+          command: pacman --sync --sysupgrade --refresh --noconfirm
+
+      - run:
+          name: Install packages
+          command: pacman --sync --noconfirm gcc git meson ninja vim
+
+      - checkout
+
+      - run:
+          name: Clone vader.vim
+          command: git clone https://github.com/junegunn/vader.vim
+
+      - run:
+          name: Run tests
+          command: vim -Nu ./test/.vimrc -c 'Vader! test/*.vader'
