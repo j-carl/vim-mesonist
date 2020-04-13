@@ -1,0 +1,47 @@
+*mesonist.txt* A Vim plugin to make things easier using meson
+
+Author: Jens Carl <https://github.com/j-carl>
+
+License: BSD-2-Clause
+
+
+INTRODUCTION                                                        *mesonist*
+
+Whereever you are in your project, a set of commands are available as a
+gateway to meson.
+
+
+COMMANDS                                                   *mesonist-commands*
+
+                                                              *:MesonistSetup*
+:MesonistSetup               Locates the meson root path with an upwards
+                             search to find directory holding the meson.build
+                             file with function project(...). Once found it
+                             runs 'meson setup <buildir>' and modifies the
+                             :make command to compile the project. The build
+                             directory can be overwriten
+                             by |g:mesonist_meson_builddir|.
+
+                                                         *:MesonLocateRootDir*
+:MesonLocateRootDir          Resets the meson root path and echoes it.
+
+
+VARIABLES                                                 *mesonist-variables*
+
+                                                 *g:mesonist_meson_executable*
+g:mesonist_meson_executable  Provide your own meson executable, if cannot be
+                             found in PATH or you want to point to a
+                             different meson.
+
+                                                   *g:mesonist_meson_builddir*
+g:mesonist_meson_builddir    Set the name of the build directoy you want
+                             to use.  Defaults to 'builddir'.
+
+
+ABOUT                                                         *mesonist-about*
+
+Get the latest version or report a bug on GitHub:
+
+https://github.com/j-carl/vim-mesonist
+
+  vim:tw=78:et:ft=help:norl:
