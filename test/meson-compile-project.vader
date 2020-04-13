@@ -1,0 +1,49 @@
+Before:
+  " change to the test directory
+  if isdirectory("test")
+    cd test
+  endif
+  if !exists("test_path")
+    let test_path = fnamemodify(getcwd(), ':p')
+  endif
+
+After:
+  call chdir(test_path)
+  let build_path = fnamemodify(getcwd() . '/meson-project/' . g:mesonist_meson_builddir, ':p')
+  call delete(build_path, 'rf')
+
+Execute(Check commands):
+  Assert exists(':MesonSetup'),         'command MesonSetup not found'
+  Assert exists(':MesonLocateRootDir'), 'command MesonLocateRootDir not found'
+
+Execute(Default values):
+  AssertEqual g:mesonist_meson_builddir, 'builddir', 'g:mesonist_meson_builddir not set'
+
+Execute(Setup meson project):
+  cd meson-project
+  e meson.build
+  MesonSetup
+
+  Assert isdirectory("builddir"),               'build directory not found'
+  Assert filereadable("builddir/build.ninja"), 'ninja build file not found'
+
+Execute(Compile meson project):
+  cd meson-project
+  e meson.build
+  MesonSetup
+  silent make
+
+  Assert filereadable("builddir/test-compile"), 'test-compile not compiled'
+
+  enew
+  if has("win32") || has("win32unix")
+    read !builddir/test-compile.exe
+  else
+    read !builddir/test-compile
+  endif
+
+Expect:
+
+  Hello Meson
+
+# vim:sw=2:ts=2
