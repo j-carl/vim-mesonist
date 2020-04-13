@@ -34,7 +34,7 @@ vim -u NONE -c "helptags vim-mesonist/doc" -c q
 
 ## Acknowledgements
 
- * Thanks to [Junegunn Choi](https://junegunn.kr/), for [vader.vim](https://github.com/junegunn/vader.vim] for his awesome testing framework.
+ * Thanks to [Junegunn Choi](https://junegunn.kr/), for [vader.vim](https://github.com/junegunn/vader.vim) for his awesome testing framework.
 
 ## License
 
