@@ -1,5 +1,7 @@
 # vim-mesonist
 
+[![j-carl](https://circleci.com/gh/j-carl/vim-mesonist.svg?style=shield)](https://circleci.com/gh/j-carl/vim-mesonist)
+
 vim-mesonist is a Vim plugin to make working with [meson](https://mesonbuild.com) easier.
 
 ## Usage
