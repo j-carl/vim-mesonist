@@ -49,6 +49,7 @@ function! s:MesonistRootPath() abort
     let l:lines = readfile(build_file, '', 1)
     if lines[0] =~ 'project'
       let s:mesonist_meson_root_path = fnameescape(fnamemodify(build_file, ':p:h'))
+      break
     endif
   endfor
 
