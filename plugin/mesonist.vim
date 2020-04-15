@@ -1,6 +1,6 @@
 " vim-mesonist - support for meson
 " Maintainer:    Jens Carl <j dot carl43 at gmx dot de>
-" Version:       0.1.0
+" Version:       0.2.0
 
 if exists('g:loaded_mesonist')
   finish
@@ -49,6 +49,7 @@ function! s:MesonistRootPath() abort
     let l:lines = readfile(build_file, '', 1)
     if lines[0] =~ 'project'
       let s:mesonist_meson_root_path = fnameescape(fnamemodify(build_file, ':p:h'))
+      break
     endif
   endfor
 
@@ -66,13 +67,11 @@ function! s:MesonistSetup() abort
     let l:old_dir = chdir(s:mesonist_meson_root_path)
   endif
 
-  let g:mesonist_step = getcwd()
-  let s:cmd = 'meson setup ' . g:mesonist_meson_builddir
-  echo s:cmd
-  let s:result = system(s:cmd)
+  let &makeprg = g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
+  silent make
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
-  let &makeprg = 'meson compile -C ' . l:builddir
+  let &makeprg = g:mesonist_meson_executable . ' compile -C ' . l:builddir
 
   if old_dir != ""
     call chdir(l:old_dir)
@@ -80,6 +79,6 @@ function! s:MesonistSetup() abort
 endfunction
 
 command! -nargs=0 -bar -bang MesonLocateRootDir echo s:MesonistRootPath()
-command! -nargs=0 -bar MesonSetup call s:MesonistSetup()
+command! -nargs=0 -bar MesonSetup call s:MesonistSetup()|redraw!
 
 " vim:set sw=2 ts=2:

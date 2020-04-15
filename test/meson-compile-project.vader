@@ -21,6 +21,7 @@ Execute(Default values):
 
 Execute(Setup meson project):
   cd meson-project
+  Log getcwd()
   e meson.build
   MesonSetup
 
@@ -46,4 +47,4 @@ Expect:
 
   Hello Meson
 
-# vim:sw=2:ts=2
+# vim:sw=2:ts=2:ft=vim

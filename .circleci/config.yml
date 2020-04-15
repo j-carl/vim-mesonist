@@ -20,4 +20,6 @@ jobs:
 
       - run:
           name: Run tests
-          command: vim -Nu ./test/.vimrc -c 'Vader! test/*.vader' > /dev/null
+          command: |
+            vim -Nu ./test/.vimrc -c 'Vader! test/meson-build-file-error.vader' > /dev/null
+            vim -Nu ./test/.vimrc -c 'Vader! test/meson-compile-project.vader' > /dev/null
