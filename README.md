@@ -2,21 +2,24 @@
 
 [![j-carl](https://circleci.com/gh/j-carl/vim-mesonist.svg?style=shield)](https://circleci.com/gh/j-carl/vim-mesonist)
 
-vim-mesonist is a Vim plugin to make working with [meson](https://mesonbuild.com) easier.
+vim-mesonist is a Vim plugin to make working with
+[meson](https://mesonbuild.com) easier.
 
 ## Usage
 
 ### Commamds
 
-* `:MesonSetup` locates the project root directory, runs `meson setup builddir`, and sets `makeprg` variable.
+ * `:MesonSetup`: Set up a meson project.
 
-* `:MesonLocateRootDir` locates project root directory and echoes it.
+ * `:MesonLocateRootDir`: Locates project root directory and echoes it.
 
 ### Variables
 
-* `g:mesonist_meson_executable` defines the meson executable to use
+ * `g:mesonist_meson_executable` defines the meson executable to use.
+ Default value is `meson`.
 
-* `g:mesonist_meson_builddir` sets the meson build directory to use. Defaults to `builddir`.
+ * `g:mesonist_meson_builddir` sets the meson build directory to use.
+ Defaults to `builddir`.
 
 ## Installation
 
@@ -36,7 +39,9 @@ vim -u NONE -c "helptags vim-mesonist/doc" -c q
 
 ## Acknowledgements
 
- * Thanks to [Junegunn Choi](https://junegunn.kr/), for [vader.vim](https://github.com/junegunn/vader.vim) for his awesome testing framework.
+ * Thanks to [Junegunn Choi](https://junegunn.kr/), for
+ [vader.vim](https://github.com/junegunn/vader.vim) his awesome testing
+ framework.
 
 ## License
 
