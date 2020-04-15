@@ -1,6 +1,6 @@
 " vim-mesonist - support for meson
 " Maintainer:    Jens Carl <j dot carl43 at gmx dot de>
-" Version:       0.1.0
+" Version:       0.2.0
 
 if exists('g:loaded_mesonist')
   finish
