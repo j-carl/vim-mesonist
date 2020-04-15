@@ -67,12 +67,12 @@ function! s:MesonistSetup() abort
   endif
 
   let g:mesonist_step = getcwd()
-  let s:cmd = 'meson setup ' . g:mesonist_meson_builddir
+  let s:cmd = g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
   echo s:cmd
   let s:result = system(s:cmd)
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
-  let &makeprg = 'meson compile -C ' . l:builddir
+  let &makeprg = g:mesonist_meson_executable . ' compile -C ' . l:builddir
 
   if old_dir != ""
     call chdir(l:old_dir)
