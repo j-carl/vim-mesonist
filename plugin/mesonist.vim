@@ -67,10 +67,8 @@ function! s:MesonistSetup() abort
     let l:old_dir = chdir(s:mesonist_meson_root_path)
   endif
 
-  let g:mesonist_step = getcwd()
-  let s:cmd = g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
-  echo s:cmd
-  let s:result = system(s:cmd)
+  let &makeprg = g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
+  silent make
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
   let &makeprg = g:mesonist_meson_executable . ' compile -C ' . l:builddir
@@ -81,6 +79,6 @@ function! s:MesonistSetup() abort
 endfunction
 
 command! -nargs=0 -bar -bang MesonLocateRootDir echo s:MesonistRootPath()
-command! -nargs=0 -bar MesonSetup call s:MesonistSetup()
+command! -nargs=0 -bar MesonSetup call s:MesonistSetup()|redraw!
 
 " vim:set sw=2 ts=2:

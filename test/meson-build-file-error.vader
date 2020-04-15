@@ -1,0 +1,29 @@
+Before:
+  " change to the test directory
+  if isdirectory("test")
+    cd test
+  endif
+  if !exists("test_path")
+    let test_path = fnamemodify(getcwd(), ':p')
+  endif
+
+After:
+  call chdir(test_path)
+  let build_path = fnamemodify(getcwd() . '/meson-build-file-error/' . g:mesonist_meson_builddir, ':p')
+  call delete(build_path, 'rf')
+
+Execute(Setup meson project):
+  cd meson-build-file-error
+  e meson.build
+  MesonSetup
+
+  Assert filereadable("builddir/meson-logs/meson-log.txt"), 'meson log file not found'
+
+  enew
+  read builddir/meson-logs/meson-log.txt
+  g!/ERROR/d
+
+Expect:
+  meson.build:3:0: ERROR: Unknown variable "abc".
+
+# vim:sw=2:ts=2:ft=vim
