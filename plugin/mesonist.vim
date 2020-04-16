@@ -67,7 +67,15 @@ function! s:MesonistSetup() abort
     let l:old_dir = chdir(s:mesonist_meson_root_path)
   endif
 
-  let &makeprg = g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
+  let l:environment_variables = []
+  if exists("g:mesonist_c_compiler")
+    let l:environment_variables += ["CC=" . g:mesonist_c_compiler]
+  endif
+  if exists("g:mesonist_cxx_compiler")
+    let l:environment_variables += ["CXX=" . g:mesonist_cxx_compiler]
+  endif
+
+  let &makeprg = join(l:environment_variables, " ") . " " . g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
   silent make
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
