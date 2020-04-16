@@ -1,0 +1,58 @@
+Before:
+  " change to the test directory
+  if isdirectory("test")
+    cd test
+  endif
+  if !exists("test_path")
+    let test_path = fnamemodify(getcwd(), ':p')
+  endif
+
+After:
+  call chdir(test_path)
+  let build_path = fnamemodify(getcwd() . '/meson-project/' . g:mesonist_meson_builddir, ':p')
+  call delete(build_path, 'rf')
+
+Execute(Default values):
+  AssertEqual g:mesonist_meson_builddir, 'builddir', 'g:mesonist_meson_builddir not set'
+
+Execute(Compile meson project with gcc):
+  let g:mesonist_c_compiler = "gcc"
+  let g:mesonist_cxx_compiler = "g++"
+
+  cd meson-project
+  e meson.build
+  MesonSetup
+
+  Assert filereadable("builddir/build.ninja"), 'no build.ninja'
+
+  enew
+  read builddir/meson-logs/meson-log.txt
+  " C++ compiler for the host machine: g++ (gcc 9.3.0 "g++ (Arch Linux 9.3.0-1) 9.3.0")
+  g!/C++ compiler for the host machine/d
+  %s/C++ compiler for the host machine: //
+  %s/ (.*$//
+
+Expect:
+  g++
+
+Execute(Compile meson project with clang):
+  let g:mesonist_c_compiler = "clang"
+  let g:mesonist_cxx_compiler = "clang++"
+
+  cd meson-project
+  e meson.build
+  MesonSetup
+
+  Assert filereadable("builddir/build.ninja"), 'no build.ninja'
+
+  enew
+  read builddir/meson-logs/meson-log.txt
+  " C++ compiler for the host machine: clang++ (clang 9.0.1 "clang version 9.0.1 ")
+  g!/C++ compiler for the host machine/d
+  %s/C++ compiler for the host machine: //
+  %s/ (.*$//
+
+Expect:
+  clang++
+
+# vim:sw=2:ts=2:ft=vim

@@ -10,7 +10,7 @@ jobs:
 
       - run:
           name: Install packages
-          command: pacman --sync --noconfirm gcc git meson ninja vim
+          command: pacman --sync --noconfirm clang gcc git meson ninja vim
 
       - checkout
 
@@ -23,3 +23,4 @@ jobs:
           command: |
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-build-file-error.vader' > /dev/null
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-compile-project.vader' > /dev/null
+            vim -Nu ./test/.vimrc -c 'Vader! test/meson-compiler.vader' > /dev/null

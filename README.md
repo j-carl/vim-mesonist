@@ -21,6 +21,12 @@ vim-mesonist is a Vim plugin to make working with
  * `g:mesonist_meson_builddir` sets the meson build directory to use.
  Defaults to `builddir`.
 
+ * `g:mesonist_c_compiler` sets the C compiler to use. Same as environment
+ variable `CC`.
+
+ * `g:mesonist_cxx_compiler` sets the C++ compiler to use. Same as environment
+ variable `CXX`.
+
 ## Installation
 
 Install via your favorite package manager
