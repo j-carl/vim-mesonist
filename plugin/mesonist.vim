@@ -74,6 +74,12 @@ function! s:MesonistSetup() abort
   if exists("g:mesonist_cxx_compiler")
     let l:environment_variables += ["CXX=" . g:mesonist_cxx_compiler]
   endif
+  if exists("g:mesonist_c_linker")
+    let l:environment_variables += ["CC_LD=" . g:mesonist_c_linker]
+  endif
+  if exists("g:mesonist_cxx_linker")
+    let l:environment_variables += ["CXX_LD=" . g:mesonist_cxx_linker]
+  endif
 
   let &makeprg = join(l:environment_variables, " ") . " " . g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
   silent make
