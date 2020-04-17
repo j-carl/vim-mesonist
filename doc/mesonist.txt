@@ -45,6 +45,14 @@ g:mesonist_c_compiler       Set the C compiler to use during 'meson setup'.
 g:mesonist_cxx_compiler     Set the CXX compiler to use during 'meson setup'.
                             If not set default compiler will be used.
 
+                                                         *g:mesonist_c_linker*
+g:mesonist_c_linker       Set the C linker to use during 'meson setup'.
+                          If not set default linker will be used.
+
+                                                       *g:mesonist_cxx_linker*
+g:mesonist_cxx_linker     Set the CXX linker to use during 'meson setup'.
+                          If not set default linker will be used.
+
 
 ABOUT                                                         *mesonist-about*
 

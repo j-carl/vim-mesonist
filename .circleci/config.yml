@@ -24,3 +24,4 @@ jobs:
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-build-file-error.vader' > /dev/null
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-compile-project.vader' > /dev/null
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-compiler.vader' > /dev/null
+            vim -Nu ./test/.vimrc -c 'Vader! test/meson-linker.vader' > /dev/null
