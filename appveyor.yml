@@ -1,0 +1,22 @@
+image: Visual Studio 2019
+
+clone_folder: C:\vim-mesonist
+
+clone_depth: 1
+
+init:
+  - git config --global core.autocrlf input
+  - set PYTHON_PATH=C:\Python38
+
+install:
+  - set PATH=%PYTHON_PATH%;%PATH%
+  - python -V
+  - python -m pip install meson
+  - meson --version
+  - cinst vim
+  - cd C:\vim-mesonist
+  - git clone --depth 1 https://github.com/junegunn/vader.vim
+
+build_script:
+  - ls
+  - vim -Nu ./test/.vimrc -c 'Vader! test/meson-build-file-error.vader' --not-a-term

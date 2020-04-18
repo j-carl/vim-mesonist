@@ -1,6 +1,8 @@
 # vim-mesonist
 
-[![j-carl](https://circleci.com/gh/j-carl/vim-mesonist.svg?style=shield)](https://circleci.com/gh/j-carl/vim-mesonist)
+[![CircleCi Linux](https://circleci.com/gh/j-carl/vim-mesonist.svg?style=shield)](https://circleci.com/gh/j-carl/vim-mesonist)
+[![AppVeyor Windows](https://ci.appveyor.com/api/projects/status/jc0wdgx3vvmvrh1u?svg=true)](https://ci.appveyor.com/project/j-carl/vim-mesonist)
+
 
 vim-mesonist is a Vim plugin to make working with
 [meson](https://mesonbuild.com) easier.
