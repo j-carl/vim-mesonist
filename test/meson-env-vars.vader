@@ -1,0 +1,37 @@
+Before:
+  " change to the test directory
+  if isdirectory("test")
+    cd test
+  endif
+  if !exists("test_path")
+    let test_path = fnamemodify(getcwd(), ':p')
+  endif
+
+After:
+  call chdir(test_path)
+  let build_path = fnamemodify(getcwd() . '/meson-project/' . g:mesonist_meson_builddir, ':p')
+  call delete(build_path, 'rf')
+
+Execute(Compile meson project with clang++ and additional environment variable):
+  let g:mesonist_env_vars = ["CXX=clang++", "PKG_CONFIG_PATH=/usr/lib/vim-mesonist"]
+
+  cd meson-project
+  e meson.build
+  MesonSetup
+
+  Assert filereadable("builddir/build.ninja"), 'no build.ninja'
+
+  enew
+  read builddir/meson-logs/meson-log.txt
+  " Remove all all lines except the following one:
+  " Using '.*' from environment with value: ''
+  g!/Using '.*' from environment with value: /d
+
+" Currently meson logs the line twice
+Expect:
+  Using 'PKG_CONFIG_PATH' from environment with value: '/usr/lib/vim-mesonist'
+  Using 'PKG_CONFIG_PATH' from environment with value: '/usr/lib/vim-mesonist'
+  Using 'CXX' from environment with value: 'clang++'
+  Using 'CXX' from environment with value: 'clang++'
+
+# vim:sw=2:ts=2:ft=vim

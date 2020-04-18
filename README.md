@@ -33,6 +33,9 @@ vim-mesonist is a Vim plugin to make working with
  * `g:mesonist_cxx_linker` sets the C++ linker to use. Same as environment
  variable `CXX_LD`.
 
+ * `g:mesonist_env_vars` set any kind of environment variables to used by meson.
+ The other environment variables set directly take precedence.
+
 ## Installation
 
 Install via your favorite package manager

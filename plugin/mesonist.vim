@@ -68,6 +68,9 @@ function! s:MesonistSetup() abort
   endif
 
   let l:environment_variables = []
+  if exists("g:mesonist_env_vars")
+    let l:environment_variables = g:mesonist_env_vars
+  endif
   if exists("g:mesonist_c_compiler")
     let l:environment_variables += ["CC=" . g:mesonist_c_compiler]
   endif
