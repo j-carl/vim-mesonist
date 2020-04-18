@@ -27,13 +27,14 @@ Execute(Compile meson project with gcc):
 
   enew
   read builddir/meson-logs/meson-log.txt
-  " C++ compiler for the host machine: g++ (gcc 9.3.0 "g++ (Arch Linux 9.3.0-1) 9.3.0")
-  g!/C++ compiler for the host machine/d
-  %s/C++ compiler for the host machine: //
-  %s/ (.*$//
+  " Remove all all lines except the following one:
+  " Using 'CXX' from environment with value: 'g++'
+  g!/Using 'CXX' from environment with value: /d
 
+" Currently meson logs the line twice
 Expect:
-  g++
+  Using 'CXX' from environment with value: 'g++'
+  Using 'CXX' from environment with value: 'g++'
 
 Execute(Compile meson project with clang):
   let g:mesonist_c_compiler = "clang"
@@ -47,12 +48,13 @@ Execute(Compile meson project with clang):
 
   enew
   read builddir/meson-logs/meson-log.txt
-  " C++ compiler for the host machine: clang++ (clang 9.0.1 "clang version 9.0.1 ")
-  g!/C++ compiler for the host machine/d
-  %s/C++ compiler for the host machine: //
-  %s/ (.*$//
+  " Remove all all lines except the following one:
+  " Using 'CXX' from environment with value: 'g++'
+  g!/Using 'CXX' from environment with value: /d
 
+" Currently meson logs the line twice
 Expect:
-  clang++
+  Using 'CXX' from environment with value: 'clang++'
+  Using 'CXX' from environment with value: 'clang++'
 
 # vim:sw=2:ts=2:ft=vim
