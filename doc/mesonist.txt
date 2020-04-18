@@ -38,20 +38,29 @@ g:mesonist_meson_builddir    Set the name of the build directoy you want
                              to use.  Defaults to 'builddir'.
 
                                                        *g:mesonist_c_compiler*
-g:mesonist_c_compiler       Set the C compiler to use during 'meson setup'.
-                            If not set default compiler will be used.
+g:mesonist_c_compiler        Set the C compiler to use during 'meson setup'.
+                             If not set default compiler will be used.
 
                                                      *g:mesonist_cxx_compiler*
-g:mesonist_cxx_compiler     Set the CXX compiler to use during 'meson setup'.
-                            If not set default compiler will be used.
+g:mesonist_cxx_compiler      Set the CXX compiler to use during 'meson setup'.
+                             If not set default compiler will be used.
 
                                                          *g:mesonist_c_linker*
-g:mesonist_c_linker       Set the C linker to use during 'meson setup'.
-                          If not set default linker will be used.
+g:mesonist_c_linker          Set the C linker to use during 'meson setup'.
+                             If not set default linker will be used.
 
                                                        *g:mesonist_cxx_linker*
-g:mesonist_cxx_linker     Set the CXX linker to use during 'meson setup'.
-                          If not set default linker will be used.
+g:mesonist_cxx_linker        Set the CXX linker to use during 'meson setup'.
+                             If not set default linker will be used.
+
+                                                         *g:mesonist_env_vars*
+g:mesonist_env_vars          List of additional environment variables to use
+                             during 'meson setup'. If you want to set C/C++
+                             compiler and/or linker use the variables
+                             |g:mesonist_c_compiler|,
+                             |g:mesonist_cxx_compiler|, |g:mesonist_c_linker|,
+                             and |g:mesonist_cxx_linker|. These variables take
+                             precedence.
 
 
 ABOUT                                                         *mesonist-about*
