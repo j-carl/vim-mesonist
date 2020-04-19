@@ -1,0 +1,15 @@
+image: Visual Studio 2019
+
+clone_folder: C:\vim-mesonist
+
+clone_depth: 1
+
+init:
+  - git config --global core.autocrlf input
+  - set PYTHON_PATH=C:\Python38
+
+install:
+  - set PATH=%PYTHON_PATH%;%PATH%
+  - python -V
+  - python -m pip install meson
+  - meson --version
