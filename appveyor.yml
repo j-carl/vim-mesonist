@@ -22,4 +22,4 @@ install:
 build_script:
   - ls
   - set VADER_OUTPUT_FILE=C:\vim-mesonist\vader.log
-  - vim -Nu ./test/.vimrc -c '+Vader! test/meson-build-file-error.vader' --not-a-term
+  - vim --no-fork -Nu ./test/.vimrc -c '+Vader! test/meson-build-file-error.vader' --not-a-term
