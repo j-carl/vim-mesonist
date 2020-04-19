@@ -7,9 +7,10 @@ clone_depth: 1
 init:
   - git config --global core.autocrlf input
   - set PYTHON_PATH=C:\Python38
+  - set PYTHON_SCRIPTS=C:\Python38\Scripts
 
 install:
-  - set PATH=%PYTHON_PATH%;%PATH%
+  - set PATH=%PYTHON_PATH%;%PYTHON_SCRIPTS%;%PATH%
   - python -V
   - python -m pip install meson
   - meson --version
