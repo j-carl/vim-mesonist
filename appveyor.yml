@@ -15,6 +15,7 @@ install:
   - python -m pip install meson
   - meson --version
   - cinst vim
+  - vim --version
   - cd C:\vim-mesonist
   - git clone --depth 1 https://github.com/junegunn/vader.vim
 
