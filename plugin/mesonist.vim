@@ -57,7 +57,7 @@ function! s:MesonistRootPath() abort
 endfunction
 
 " Setup meson project
-function! s:MesonistSetup() abort
+function! s:MesonistSetup(...) abort
   if s:mesonist_meson_root_path == ""
     let s:mesonist_meson_root_path = s:MesonistRootPath()
   endif
@@ -84,7 +84,7 @@ function! s:MesonistSetup() abort
     let l:environment_variables += ["CXX_LD=" . g:mesonist_cxx_linker]
   endif
 
-  let &makeprg = join(l:environment_variables, " ") . " " . g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir
+  let &makeprg = join(l:environment_variables, " ") . " " . g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir . ' ' . join(a:000)
   silent make
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
@@ -96,6 +96,6 @@ function! s:MesonistSetup() abort
 endfunction
 
 command! -nargs=0 -bar -bang MesonLocateRootDir echo s:MesonistRootPath()
-command! -nargs=0 -bar MesonSetup call s:MesonistSetup()|redraw!
+command! -nargs=? -bar MesonSetup call s:MesonistSetup(<f-args>)|redraw!
 
 " vim:set sw=2 ts=2:
