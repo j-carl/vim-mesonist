@@ -6,11 +6,11 @@ jobs:
     steps:
       - run:
           name: Update system
-          command: pacman --sync --sysupgrade --refresh --noconfirm
+          command: pacman --sync --sysupgrade --refresh --noconfirm --noprogressbar
 
       - run:
           name: Install packages
-          command: pacman --sync --noconfirm clang gcc git meson ninja vim
+          command: pacman --sync --noconfirm --noprogressbar clang gcc git openssh meson ninja vim
 
       - checkout
 
