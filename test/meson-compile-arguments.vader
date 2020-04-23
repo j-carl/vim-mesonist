@@ -21,19 +21,19 @@ Execute(Set up project twice):
   Assert filereadable("builddir/test-compile"), 'test-compile not compiled'
   cclose
 
-  let g:mesonist_cxx_linker = "lld"
+  let g:mesonist_cxx_linker = "gold"
   MesonSetup --wipe
   silent make
 
   enew
   read builddir/meson-logs/meson-log.txt
   " Remove all all lines except the following one:
-  " Using 'CXX_LD' from environment with value: 'lld'
+  " Using 'CXX_LD' from environment with value: 'gold'
   g!/Using 'CXX_LD' from environment with value: /d
 
 " Currently meson logs the line twice
 Expect:
-  Using 'CXX_LD' from environment with value: 'lld'
-  Using 'CXX_LD' from environment with value: 'lld'
+  Using 'CXX_LD' from environment with value: 'gold'
+  Using 'CXX_LD' from environment with value: 'gold'
 
 # vim:sw=2:ts=2:ft=vim
