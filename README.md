@@ -9,7 +9,8 @@ vim-mesonist is a Vim plugin to make working with
 
 ### Commamds
 
- * `:MesonSetup`: Set up a meson project.
+ * `:MesonSetup`: Set up a meson project. Any arguments given to `:MesonSetup`
+ will directly passed on to the meson command.
 
  * `:MesonLocateRootDir`: Locates project root directory and echoes it.
 

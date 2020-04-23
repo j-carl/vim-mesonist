@@ -26,3 +26,4 @@ jobs:
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-compiler.vader' > /dev/null
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-linker.vader' > /dev/null
             vim -Nu ./test/.vimrc -c 'Vader! test/meson-env-vars.vader' > /dev/null
+            vim -Nu ./test/.vimrc -c 'Vader! test/meson-compile-arguments.vader' > /dev/null

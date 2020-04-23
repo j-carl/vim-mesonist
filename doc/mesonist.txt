@@ -14,7 +14,7 @@ gateway to meson.
 COMMANDS                                                   *mesonist-commands*
 
                                                               *:MesonistSetup*
-:MesonistSetup               Locates the meson root path with an upwards
+:MesonistSetup {args}        Locates the meson root path with an upwards
                              search to find directory holding the meson.build
                              file with function project(...). Once found it
                              runs 'meson setup <buildir>' and modifies the
