@@ -7,7 +7,7 @@ License: BSD-2-Clause
 
 INTRODUCTION                                                        *mesonist*
 
-Whereever you are in your project, a set of commands are available as a
+Wherever you are in your project, a set of commands are available as a
 gateway to meson.
 
 
@@ -17,25 +17,35 @@ COMMANDS                                                   *mesonist-commands*
 :MesonistSetup {args}        Locates the meson root path with an upwards
                              search to find directory holding the meson.build
                              file with function project(...). Once found it
-                             runs 'meson setup <buildir>' and modifies the
+                             runs 'meson setup <builddir>' and modifies the
                              :make command to compile the project. The build
-                             directory can be overwriten
+                             directory can be overwritten
                              by |g:mesonist_meson_builddir|.
 
                                                          *:MesonLocateRootDir*
 :MesonLocateRootDir          Resets the meson root path and echoes it.
 
+                                              *:MesonLinkCompilationDatabase*
+:MesonLinkCompilationDb      Link compilation database file
+                             'compile_commands.json' to project root directory.
+
 
 VARIABLES                                                 *mesonist-variables*
 
                                                  *g:mesonist_meson_executable*
-g:mesonist_meson_executable  Provide your own meson executable, if cannot be
-                             found in PATH or you want to point to a
-                             different meson.
+g:mesonist_meson_executable  Provide your own meson executable, if it cannot be
+                             found in PATH or you want to point to a different
+                             meson.
 
                                                    *g:mesonist_meson_builddir*
-g:mesonist_meson_builddir    Set the name of the build directoy you want
-                             to use.  Defaults to 'builddir'.
+g:mesonist_meson_builddir    Set the name of the build directory you want
+                             to use. Defaults to 'builddir'.
+
+                                             *g:mesonist_link_compilation_db*
+g:mesonist_link_compilation_db  Enables to create a symbolic link to the
+                                compilation database (file:
+                                compile_commands.json) in the project root
+                                directory. Default is not to create a link.
 
                                                        *g:mesonist_c_compiler*
 g:mesonist_c_compiler        Set the C compiler to use during 'meson setup'.
