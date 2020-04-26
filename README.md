@@ -14,6 +14,11 @@ vim-mesonist is a Vim plugin to make working with
 
  * `:MesonLocateRootDir`: Locates project root directory and echoes it.
 
+ * `:MesonLinkCompilationDatabase`: Create a symbolic link to compilation
+ database (`compile_commands.json` in the project root directory to work with
+ [YouCompleteMe](https://ycm-core.github.io/YouCompleteMe/). It ignores
+ `g:mesonist_link_compilation_db`.
+
 ### Variables
 
  * `g:mesonist_meson_executable` defines the meson executable to use.
@@ -21,6 +26,9 @@ vim-mesonist is a Vim plugin to make working with
 
  * `g:mesonist_meson_builddir` sets the meson build directory to use.
  Defaults to `builddir`.
+
+ * `g:mesonist_link_compilation_db` create symbolic link to compilation database
+ in the project root directory during `:MesonSetup`.
 
  * `g:mesonist_c_compiler` sets the C compiler to use. Same as environment
  variable `CC`.

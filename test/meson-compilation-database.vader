@@ -1,0 +1,26 @@
+Before:
+  " change to the test directory
+  if isdirectory("test")
+    cd test
+  endif
+  if !exists("test_path")
+    let test_path = fnamemodify(getcwd(), ':p')
+  endif
+
+After:
+  call chdir(test_path)
+  let build_path = fnamemodify(getcwd() . '/meson-project/' . g:mesonist_meson_builddir, ':p')
+  let compilation_db = fnamemodify(getcwd() . '/meson-project/compile_commands.json', ':p')
+
+  call delete(build_path, 'rf')
+  call delete(compilation_db)
+
+Execute(Setup meson project with compilation database):
+  let g:mesonist_link_compilation_db = 1
+  cd meson-project
+  e meson.build
+  MesonSetup
+
+  Assert filereadable("compile_commands.json"), 'link to compile_commands.json not created'
+
+# vim:sw=2:ts=2:ft=vim
