@@ -7,7 +7,7 @@ vim-mesonist is a Vim plugin to make working with
 
 ## Usage
 
-### Commamds
+### Commands
 
  * `:MesonSetup`: Set up a meson project. Any arguments given to `:MesonSetup`
  will directly passed on to the meson command.
@@ -15,8 +15,8 @@ vim-mesonist is a Vim plugin to make working with
  * `:MesonLocateRootDir`: Locates project root directory and echoes it.
 
  * `:MesonLinkCompilationDatabase`: Create a symbolic link to compilation
- database (`compile_commands.json` in the project root directory to work with
- [YouCompleteMe](https://ycm-core.github.io/YouCompleteMe/). It ignores
+ database (file `compile_commands.json`) in the project root directory to work
+ with [YouCompleteMe](https://ycm-core.github.io/YouCompleteMe/). It ignores
  `g:mesonist_link_compilation_db`.
 
 ### Variables
