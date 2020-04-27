@@ -21,7 +21,6 @@ Execute(Default values):
 
 Execute(Setup meson project):
   cd meson-project
-  Log getcwd()
   e meson.build
   MesonSetup
 
