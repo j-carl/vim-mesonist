@@ -1,2 +1,6 @@
-vader.vim/
+# meson stuff
 builddir/
+
+# vim stuff
+doc/tags
+vader.vim/
