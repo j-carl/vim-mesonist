@@ -116,7 +116,7 @@ function! s:MesonistSetup(...) abort
 
   let &makeprg = join(l:environment_variables, " ") . " " . g:mesonist_meson_executable . ' setup ' . g:mesonist_meson_builddir . ' ' . join(a:000)
   silent make|redraw!
-  execute "MesonLinkCompilationDatabase"
+  call s:MesonistLinkCompilationDatabase()
 
   let l:builddir = s:fnameescape(s:mesonist_meson_root_path . '/' . g:mesonist_meson_builddir)
   let &makeprg = g:mesonist_meson_executable . ' compile -C ' . l:builddir
